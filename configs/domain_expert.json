@@ -1,0 +1,18 @@
+{
+  "train_images": 6471,
+  "validation_images": 548,
+  "epochs": 120,
+  "seed": 42,
+  "batch_size": 1,
+  "gradient_accumulation": 16,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.05,
+  "max_grad_norm": 1.0,
+  "warmup_epochs": 5,
+  "min_pixels": 200704,
+  "max_pixels": 802816,
+  "resize_factor": 28,
+  "precision": "bfloat16_autocast",
+  "order": "filename_ascending",
+  "checkpoint_epoch": 120
+}

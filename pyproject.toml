@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regional-evidence"
+version = "1.0.0"
+description = "Regional visual evidence and context interventions in vision-language models"
+requires-python = ">=3.12"
+dependencies = ["numpy>=1.26", "Pillow>=10.4"]
+
+[project.optional-dependencies]
+qwen = ["torch==2.6.0", "torchvision==0.21.0", "transformers==5.14.1", "peft==0.20.0", "accelerate>=1.10,<2", "safetensors>=0.5"]
+kimi = ["torch==2.6.0", "torchvision==0.21.0", "transformers==4.50.3", "peft==0.20.0", "accelerate>=1.0,<2", "safetensors>=0.5", "tiktoken", "einops"]
+
+[project.scripts]
+prepare-visdrone = "regional_evidence.data.prepare:main"
+summarize-regional-evidence = "regional_evidence.summary:main"
+
+[tool.setuptools.packages.find]
+include = ["regional_evidence*"]
+
+[tool.ruff]
+target-version = "py312"

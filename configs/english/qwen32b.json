@@ -1,0 +1,75 @@
+{
+  "hidden_size": 5120,
+  "seed": 42,
+  "dtype": "bfloat16",
+  "max_visual_tokens": 1024,
+  "max_sequence_tokens": 2048,
+  "micro_batch": 1,
+  "gradient_accumulation": 16,
+  "epochs": 1,
+  "learning_rate": 0.0001,
+  "max_grad_norm": 1.0,
+  "lora": {
+    "rank": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "bias": "none",
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj"
+    ],
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.0,
+    "shuffle": false,
+    "gradient_checkpointing": true,
+    "tf32": false,
+    "trainable_parameters": 33554432,
+    "checkpoint_selection": "last",
+    "eval_steps": null,
+    "attention": "sdpa_math"
+  },
+  "fusion": {
+    "weight_decay": 0.05,
+    "warmup_ratio": 0.0,
+    "shuffle": false,
+    "gamma": 0.5,
+    "gamma_trainable": false,
+    "fusion_dim": 512,
+    "heads": 8,
+    "windows": [
+      8,
+      4,
+      2,
+      1
+    ],
+    "train_values": "all",
+    "inference_values": "p1",
+    "expert_epoch": 120,
+    "gradient_checkpointing": true,
+    "zero_output_projection": true,
+    "trainable_parameters": 6302224,
+    "attention": "sdpa_fast_only"
+  },
+  "evaluation": {
+    "max_new_tokens": 384,
+    "regional_max_new_tokens": 16,
+    "do_sample": false,
+    "num_beams": 1,
+    "seed": 42,
+    "attention": "sdpa_math",
+    "region_weighting": "equal_per_region",
+    "bootstrap_repeats": 10000,
+    "bootstrap_seed": 20261018,
+    "confidence_level": 0.95
+  },
+  "dataset": {
+    "train_images": 6471,
+    "validation_images": 548,
+    "train_records": 32355,
+    "validation_records": 2740,
+    "language": "en"
+  },
+  "transformers": "5.14.1"
+}
